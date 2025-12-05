@@ -4,6 +4,9 @@
 @author: Guillermo Torres
 """
 
+import lovely_tensors as lt
+lt.monkey_patch()
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -149,6 +152,9 @@ if __name__ == "__main__":
     # fake batch
     images = torch.randn(4, 3, 224, 224)
     token_ids = torch.randint(0, 40000, (4, 77))
+
+    print(images)
+    print(token_ids)
 
     logits = model(images, token_ids)
     loss = clip_loss(logits)
